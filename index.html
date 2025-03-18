@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartmani - Početna</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('Pozadinska_slika.jpg'); /* Pozadinska slika */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: black; /* Sve u crnoj boji */
+            overflow-x: hidden; /* Sprječava horizontalno skrolanje */
+        }
+
+        header {
+            background-color: #2c3e50; /* Poluprozirna boja */
+            padding: 15px 0;
+            text-align: center;
+            position: relative; /* Potrebno za z-index */
+            z-index: 2; /* Navigacija ima viši prioritet */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Navigacija je uvijek vidljiva */
+            flex-direction: row; /* Horizontalni raspored linkova */
+            text-align: center;
+            z-index: 3;
+        }
+
+        .nav-menu.active {
+            flex-direction: column; /* Kod hamburger navigacije */
+            background-color: rgba(44, 62, 80, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white; /* Hiperlinkovi su bijeli */
+            font-size: 18px;
+        }
+
+        .nav-menu a:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: white; /* Vidljivost tipke */
+            cursor: pointer;
+            z-index: 4; /* Iznad navigacije */
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background-color: rgba(44, 62, 80, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+        }
+
+        .hamburger {
+            display: none; /* Sakrij hamburger prema zadanim postavkama */
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column; /* Postavlja sadržaj u stupac */
+            align-items: center; /* Centriranje elemenata horizontalno */
+            justify-content: flex-start; /* Pozicioniranje prema vrhu */
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px; /* Udaljenost od navigacije */
+            margin-bottom: 10px; /* Udaljenost od p elementa */
+            font-size: 32px; /* Usklađena veličina fonta */
+        }
+
+        p {
+            text-align: center;
+            margin-top: 0; /* Smanjena udaljenost prema h1 */
+            margin-bottom: 20px; /* Udaljenost od ostalog sadržaja */
+            font-size: 18px; /* Usklađena veličina fonta */
+        }
+
+        .highlight {
+            background-color: rgba(241, 196, 15, 0.9); /* Poluprozirna žuta pozadina */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .promo {
+            background-color: rgba(241, 196, 15, 0.9); /* Poluprozirna boja */
+            color: black; /* Tekst sada crne boje */
+            text-align: center;
+            padding: 20px;
+            margin: 0 auto; /* Centrirano horizontalno */
+            border-radius: 5px;
+            font-size: 18px;
+            position: relative; /* Unutar tijeka stranice */
+            bottom: 0; /* Osigurava da ostaje na dnu tijeka */
+            width: 90%; /* Širina prilagođena za responzivnost */
+            z-index: 1; /* Ispod navigacije */
+        }
+
+        .promo a {
+            color: blue; /* Linkovi u "promo" su plavi */
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .promo a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.svg" alt="Logo Apartmani">
+            </a>
+            <button class="hamburger" aria-label="Otvori izbornik">☰</button>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="apartmani.html">Apartmani</a></li>
+                <li><a href="galerija.html">Galerija</a></li>
+                <li><a href="cjenik.html">Cjenik</a></li>
+                <li><a href="rezervacija.html">Rezervacija</a></li>
+                <li><a href="lokacija.html">Lokacija</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="highlight">
+            Dobrodošli u apartmane Blue Lagoon
+        </h1>
+        <p class="highlight">
+            Ovdje možeš pronaći savršeno mjesto za odmor.
+        </p>
+
+        <div class="promo">
+            <p>🏖️<strong>Planiraš savršen odmor?</strong></p>
+            <p>Iznajmi naš vrhunski apartman u Novalji i uživaj u luksuznom smještaju po <strong>najboljim cijenama</strong>!</p>
+            <p>🌞 <strong>Top ponuda ljeta</strong>: Blizina plaža, savršena lokacija, udobnost i povoljni uvjeti - sve što trebaš za nezaboravan boravak.</p>
+            <p><a href="rezervacija.html">Rezerviraj sada</a> i osiguraj svoje mjesto već danas!</p>
+        </div>
+    </main>
+
+    <footer>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <video controls width="25%" height="auto">
+                <source src="video_uređen.mp4" type="video/mp4">
+                Vaš preglednik ne podržava HTML video. Preuzmite video <a href="video_uređen.mp4">ovdje</a>.
+            </video>
+        </div>
+    </footer>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+            const navLinks = document.querySelectorAll(".nav-menu a");
+
+            function checkVisibility() {
+                let visible = true;
+                navLinks.forEach(link => {
+                    if (link.offsetWidth === 0 || link.offsetHeight === 0) {
+                        visible = false;
+                    }
+                });
+                // Pokaži hamburger samo kad linkovi nisu vidljivi
+                hamburger.style.display = visible ? "none" : "block";
+            }
+
+            // Provjeri vidljivost prilikom učitavanja i promjene veličine prozora
+            checkVisibility();
+            window.addEventListener("resize", checkVisibility);
+
+            // Dodaj aktivaciju menija na klik hamburgera
+            hamburger.addEventListener("click", function () {
+                navMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>
