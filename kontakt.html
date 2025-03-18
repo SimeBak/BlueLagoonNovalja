@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('Pozadinska_slika.jpg'); /* Pozadinska slika */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px; /* Udaljenost od navigacije */
+            margin-bottom: 10px; /* Udaljenost od p elementa */
+            font-size: 32px; /* Usklađena veličina fonta */
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .highlight {
+            background-color: rgba(241, 196, 15, 0.9); /* Poluprozirna žuta pozadina */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background-color: rgba(44, 62, 80, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+        }
+
+        .hamburger {
+            display: none; /* Sakrij hamburger prema zadanim postavkama */
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/SimeBak/BlueLagoonNovalja/99512b4b553e32e9e64eb9d579bba2ca7be8fd4b/Logo.svg" alt="Logo Apartmani">
+            </a>
+            <button class="hamburger" aria-label="Otvori izbornik">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="apartmani.html">Apartmani</a></li>
+                <li><a href="galerija.html">Galerija</a></li>
+                <li><a href="cjenik.html">Cjenik</a></li>
+                <li><a href="rezervacija.html">Rezervacija</a></li>
+                <li><a href="lokacija.html">Lokacija</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="highlight">Kontakt</h1>
+        <div class="highlight">
+            <p><strong>Adresa:</strong> Varsan, Brneštre 2</p>
+            <p><strong>E-mail:</strong> <a href="mailto:bluelagoon@gmail.com">bluelagoon@gmail.com</a></p>
+            <p><strong>Telefon:</strong> <a href="tel:+385955882710">+385 95 5882 710</a></p>
+        </div>
+
+        <form action="send_message.php" method="POST">
+            <label for="name">Ime i prezime:</label>
+            <input type="text" id="name" name="name" placeholder="Unesite vaše ime i prezime" required>
+
+            <label for="email">E-mail adresa:</label>
+            <input type="email" id="email" name="email" placeholder="Unesite vašu e-mail adresu" required>
+
+            <label for="message">Poruka:</label>
+            <textarea id="message" name="message" rows="6" placeholder="Unesite vašu poruku" required></textarea>
+
+            <button type="submit">Pošalji poruku</button>
+        </form>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+            const navLinks = document.querySelectorAll(".nav-menu a");
+
+            function checkVisibility() {
+                let visible = true;
+                navLinks.forEach(link => {
+                    if (link.offsetWidth === 0 || link.offsetHeight === 0) {
+                        visible = false;
+                    }
+                });
+                // Pokaži hamburger samo kad linkovi nisu vidljivi
+                hamburger.style.display = visible ? "none" : "block";
+            }
+
+            // Provjeri vidljivost prilikom učitavanja i promjene veličine prozora
+            checkVisibility();
+            window.addEventListener("resize", checkVisibility);
+
+            // Dodaj aktivaciju menija na klik hamburgera
+            hamburger.addEventListener("click", function () {
+                navMenu.classList.toggle("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
